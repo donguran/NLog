@@ -20,45 +20,61 @@ class NLog {
     companion object {
         @JvmStatic
         private val TAG:String = "Neander"
+        private var enable:Boolean = true
+        var isEnable:Boolean = enable
+            set(value) {
+                enable = value
+            }
+
 
         @JvmStatic
         fun v(msg:String) {
-            val e = Exception()
-            val s = e.stackTrace[1]
+            if (enable) {
+                val e = Exception()
+                val s = e.stackTrace[1]
 
-            Log.v(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+                Log.v(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+            }
         }
 
         @JvmStatic
         fun i(msg:String) {
-            val e = Exception()
-            val s = e.stackTrace[1]
+            if (enable) {
+                val e = Exception()
+                val s = e.stackTrace[1]
 
-            Log.i(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+                Log.i(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+            }
         }
 
         @JvmStatic
         fun d(msg:String) {
-            val e = Exception()
-            val s = e.stackTrace[1]
+            if (enable) {
+                val e = Exception()
+                val s = e.stackTrace[1]
 
-            Log.d(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+                Log.d(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+            }
         }
 
         @JvmStatic
         fun w(msg:String) {
-            val e = Exception()
-            val s = e.stackTrace[1]
+            if (enable) {
+                val e = Exception()
+                val s = e.stackTrace[1]
 
-            Log.w(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+                Log.w(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+            }
         }
 
         @JvmStatic
         fun e(msg:String) {
-            val e = Exception()
-            val s = e.stackTrace[1]
+            if (enable) {
+                val e = Exception()
+                val s = e.stackTrace[1]
 
-            Log.e(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+                Log.e(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+            }
         }
     }
 }
