@@ -20,7 +20,7 @@ class NLog {
     companion object {
         @JvmStatic
         private val TAG:String = "Neander"
-        private var enable:Boolean = true
+        private var enable:Boolean = BuildConfig.DEBUG
         var isEnable:Boolean = enable
             set(value) {
                 enable = value
