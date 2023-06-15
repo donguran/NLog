@@ -19,12 +19,12 @@ import android.util.Log
 class NLog {
     companion object {
         @JvmStatic
-        private val TAG:String = "Neander"
-        private var enable:Boolean = BuildConfig.DEBUG
-        var isEnable:Boolean = enable
-            set(value) {
-                enable = value
-            }
+        private const val TAG:String = "Neander"
+        private var enable:Boolean = true
+       
+        fun setEnable(enable:Boolean) {
+            this.enable = enable
+        }
 
 
         @JvmStatic
