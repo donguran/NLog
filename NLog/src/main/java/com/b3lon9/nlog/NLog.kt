@@ -19,7 +19,7 @@ import android.util.Log
 class NLog {
     companion object {
         @JvmStatic
-        private const val TAG:String = "Neander"
+        private val TAG:String = "Neander"
         private var enable:Boolean = true
        
         fun setEnable(enable:Boolean) {
