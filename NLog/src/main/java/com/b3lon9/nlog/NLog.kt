@@ -18,18 +18,24 @@ import android.util.Log
 
 class NLog {
     companion object {
-        @JvmStatic
-        private val TAG:String = "Neander"
-        private var enable:Boolean = true
-       
-        fun setEnable(enable:Boolean) {
-            this.enable = enable
+        private val TAG:String = "cavedwellers"
+        private var isEnable = true
+
+        /**
+         * Custom Log Enable
+         *
+         * @param isEnable true:show log / false:don't show log
+         * */
+        fun setEnable(isEnable:Boolean) {
+            this.isEnable = isEnable
         }
+
+        private fun isEnable():Boolean = isEnable
 
 
         @JvmStatic
         fun v(msg:String) {
-            if (enable) {
+            if (isEnable()) {
                 val e = Exception()
                 val s = e.stackTrace[1]
 
@@ -39,7 +45,7 @@ class NLog {
 
         @JvmStatic
         fun i(msg:String) {
-            if (enable) {
+            if (isEnable()) {
                 val e = Exception()
                 val s = e.stackTrace[1]
 
@@ -49,7 +55,7 @@ class NLog {
 
         @JvmStatic
         fun d(msg:String) {
-            if (enable) {
+            if (isEnable()) {
                 val e = Exception()
                 val s = e.stackTrace[1]
 
@@ -59,7 +65,7 @@ class NLog {
 
         @JvmStatic
         fun w(msg:String) {
-            if (enable) {
+            if (isEnable()) {
                 val e = Exception()
                 val s = e.stackTrace[1]
 
@@ -69,7 +75,7 @@ class NLog {
 
         @JvmStatic
         fun e(msg:String) {
-            if (enable) {
+            if (isEnable()) {
                 val e = Exception()
                 val s = e.stackTrace[1]
 
