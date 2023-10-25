@@ -9,7 +9,7 @@ android Log , you can know linenum-ber, line location and error message
 ```Gradle
 dependencyResolutionManagement {
      repositories {
-        maven { url 'https://jitpack.io'}
+        maven { url 'https://jitpack.io'}     // or : maven(url = "https://jitpack.io")
     } 
 }
 ```
