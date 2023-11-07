@@ -18,7 +18,7 @@ import android.util.Log
 
 class NLog {
     companion object {
-        private val TAG:String = "cavedwellers"
+        private var TAG:String = "cavedwellers"
         private var isEnable = true
 
         /**
@@ -32,6 +32,12 @@ class NLog {
 
         private fun isEnable():Boolean = isEnable
 
+        private fun getTag(): String = TAG
+
+        fun init(tagName: String, isEnable: Boolean): Unit {
+            this.TAG = tagName
+            this.isEnable = isEnable
+        }
 
         @JvmStatic
         fun v(msg:String) {
@@ -39,7 +45,7 @@ class NLog {
                 val e = Exception()
                 val s = e.stackTrace[1]
 
-                Log.v(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+                Log.v(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
             }
         }
 
@@ -49,7 +55,7 @@ class NLog {
                 val e = Exception()
                 val s = e.stackTrace[1]
 
-                Log.i(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+                Log.i(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
             }
         }
 
@@ -59,7 +65,7 @@ class NLog {
                 val e = Exception()
                 val s = e.stackTrace[1]
 
-                Log.d(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+                Log.d(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
             }
         }
 
@@ -69,7 +75,7 @@ class NLog {
                 val e = Exception()
                 val s = e.stackTrace[1]
 
-                Log.w(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+                Log.w(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
             }
         }
 
@@ -79,7 +85,7 @@ class NLog {
                 val e = Exception()
                 val s = e.stackTrace[1]
 
-                Log.e(TAG, "[${s.fileName}:${s.lineNumber}] $msg")
+                Log.e(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
             }
         }
     }
