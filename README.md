@@ -19,7 +19,7 @@ dependencyResolutionManagement {
 #### build.gradle(app)
 ```Gradle
 dependencies {
-    implementation 'com.github.b3lon9:NLog:1.0.7'
+    implementation 'com.github.b3lon9:NLog:1.0.8'
 }
 ```
 
