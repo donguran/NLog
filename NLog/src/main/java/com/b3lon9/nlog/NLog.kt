@@ -34,10 +34,15 @@ class NLog {
 
         private fun getTag(): String = TAG
 
+        private fun setTag(tagName: String) {
+            this.TAG = tagName
+        }
+
         fun init(tagName: String, isEnable: Boolean): Unit {
             this.TAG = tagName
             this.isEnable = isEnable
         }
+
 
         @JvmStatic
         fun v(msg:String) {
@@ -87,6 +92,39 @@ class NLog {
 
                 Log.e(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
             }
+        }
+
+        /**
+         * Overload
+         * */
+        @JvmStatic
+        fun v(tagName: String, msg: String) {
+            setTag(tagName)
+            this.v(msg)
+        }
+
+        @JvmStatic
+        fun i(tagName: String, msg: String) {
+            setTag(tagName)
+            this.i(msg)
+        }
+
+        @JvmStatic
+        fun d(tagName: String, msg: String) {
+            setTag(tagName)
+            this.d(msg)
+        }
+
+        @JvmStatic
+        fun w(tagName: String, msg: String) {
+            setTag(tagName)
+            this.w(msg)
+        }
+
+        @JvmStatic
+        fun e(tagName: String, msg: String) {
+            setTag(tagName)
+            this.e(msg)
         }
     }
 }
