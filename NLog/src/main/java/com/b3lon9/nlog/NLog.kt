@@ -16,115 +16,165 @@ package com.b3lon9.nlog
  */
 import android.util.Log
 
-class NLog {
-    companion object {
-        private var TAG:String = "cavedwellers"
-        private var isEnable = true
+/**
+ * JvmStatic Java와의 상호작용
+ * */
+object NLog {
+    private var TAG: String = "cavedwellers"
+    private var isEnable = true
 
-        /**
-         * Custom Log Enable
-         *
-         * @param isEnable true:show log / false:don't show log
-         * */
-        fun setEnable(isEnable:Boolean) {
-            this.isEnable = isEnable
+    /**
+     * Custom Log Enable
+     *
+     * @param isEnable true:show log / false:don't show log
+     * */
+    fun setEnable(isEnable: Boolean) {
+        this.isEnable = isEnable
+    }
+
+    private fun isEnable(): Boolean = isEnable
+
+    private fun getTag(): String = TAG
+
+    private fun setTag(tagName: String) {
+        this.TAG = tagName
+    }
+
+
+    fun init(tagName: String, isEnable: Boolean): Unit {
+        this.TAG = tagName
+        this.isEnable = isEnable
+    }
+
+
+    @JvmStatic
+    fun v(msg: String) = inlineV(msg)
+
+    @JvmStatic
+    fun i(msg: String) = inlineI(msg)
+
+    @JvmStatic
+    fun d(msg: String) = inlineD(msg)
+
+    @JvmStatic
+    fun w(msg: String) = inlineW(msg)
+
+    @JvmStatic
+    fun e(msg: String) = inlineE(msg)
+
+    /**
+     * Overload
+     * */
+    @JvmStatic
+    fun v(tagName: String, msg: String) {
+        setTag(tagName)
+        inlineV(msg)
+    }
+
+    @JvmStatic
+    fun i(tagName: String, msg: String) {
+        setTag(tagName)
+        inlineI(msg)
+    }
+
+    @JvmStatic
+    fun d(tagName: String, msg: String) {
+        setTag(tagName)
+        inlineD(msg)
+    }
+
+    @JvmStatic
+    fun w(tagName: String, msg: String) {
+        setTag(tagName)
+        inlineW(msg)
+    }
+
+    @JvmStatic
+    fun e(tagName: String, msg: String) {
+        setTag(tagName)
+        inlineE(msg)
+    }
+
+    /*
+    line 2023-11-23-수
+    overload
+    */
+    @JvmStatic
+    fun l (): Unit = line()
+
+    @JvmStatic
+    fun l(level: LogLevel = LogLevel.VERBOSE) = line(level = level)
+
+    @JvmStatic
+    fun l(count: Int = 10) = line(count = count)
+
+    @JvmStatic
+    fun l(shape: String = "=") = line(shape = shape)
+
+    @JvmStatic
+    fun l(level: LogLevel = LogLevel.VERBOSE, count: Int = 10, shape: String = "=") = line(level=level, count = count, shape = shape)
+
+
+    private inline fun line(level: LogLevel = LogLevel.VERBOSE, count: Int = 10, shape: String = "=") {
+        val strBuilder = StringBuilder()
+
+        for (i in 0..count) {
+            strBuilder.append(shape)
         }
 
-        private fun isEnable():Boolean = isEnable
-
-        private fun getTag(): String = TAG
-
-        private fun setTag(tagName: String) {
-            this.TAG = tagName
-        }
-
-        fun init(tagName: String, isEnable: Boolean): Unit {
-            this.TAG = tagName
-            this.isEnable = isEnable
-        }
-
-
-        @JvmStatic
-        fun v(msg:String) {
-            if (isEnable()) {
-                val e = Exception()
-                val s = e.stackTrace[1]
-
-                Log.v(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
+        strBuilder.toString().let {
+            when (level) {
+                LogLevel.VERBOSE -> inlineV(it)
+                LogLevel.INFO -> inlineI(it)
+                LogLevel.DEBUG -> inlineD(it)
+                LogLevel.WARN -> inlineW(it)
+                LogLevel.ERROR -> inlineE(it)
             }
         }
+    }
 
-        @JvmStatic
-        fun i(msg:String) {
-            if (isEnable()) {
-                val e = Exception()
-                val s = e.stackTrace[1]
+    private inline fun inlineV(msg: String){
+        if (isEnable()) {
+            val e = Exception()
+            val s = e.stackTrace[1]
 
-                Log.i(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
-            }
+            Log.v(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
         }
+    }
 
-        @JvmStatic
-        fun d(msg:String) {
-            if (isEnable()) {
-                val e = Exception()
-                val s = e.stackTrace[1]
+    private inline fun inlineI(msg: String){
+        if (isEnable()) {
+            val e = Exception()
+            val s = e.stackTrace[1]
 
-                Log.d(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
-            }
+            Log.i(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
         }
+    }
 
-        @JvmStatic
-        fun w(msg:String) {
-            if (isEnable()) {
-                val e = Exception()
-                val s = e.stackTrace[1]
+    private inline fun inlineD(msg: String){
+        if (isEnable()) {
+            val e = Exception()
+            val s = e.stackTrace[1]
 
-                Log.w(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
-            }
+            Log.d(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
         }
+    }
 
-        @JvmStatic
-        fun e(msg:String) {
-            if (isEnable()) {
-                val e = Exception()
-                val s = e.stackTrace[1]
+    private inline fun inlineW(msg: String){
+        if (isEnable()) {
+            val e = Exception()
+            val s = e.stackTrace[1]
 
-                Log.e(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
-            }
+            Log.w(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
         }
+    }
 
-        /**
-         * Overload
-         * */
-        @JvmStatic
-        fun v(tagName: String, msg: String) {
-            setTag(tagName)
-            this.v(msg)
-        }
+    private inline fun inlineE(msg: String){
+        if (isEnable()) {
+            val e = Exception()
+            val s = e.stackTrace[1]
 
-        @JvmStatic
-        fun i(tagName: String, msg: String) {
-            setTag(tagName)
-            this.i(msg)
-        }
-
-        @JvmStatic
-        fun d(tagName: String, msg: String) {
-            setTag(tagName)
-            this.d(msg)
-        }
-
-        @JvmStatic
-        fun w(tagName: String, msg: String) {
-            setTag(tagName)
-            this.w(msg)
-        }
-
-        @JvmStatic
-        fun e(tagName: String, msg: String) {
-            setTag(tagName)
-            this.e(msg)
+            Log.e(getTag(), "[${s.fileName}:${s.lineNumber}] $msg")
         }
     }
 }
