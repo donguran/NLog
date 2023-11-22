@@ -19,10 +19,34 @@ dependencyResolutionManagement {
 #### build.gradle(app)
 ```Gradle
 dependencies {
-    implementation 'com.github.b3lon9:NLog:1.0.8'
+    implementation 'com.github.b3lon9:NLog:1.0.9'
 }
 ```
+<br />
 
+#### possible LineBreak from "1.0.9" version <br />
+`NLog.l(level: LogLevel, count: Int, shape: String)`
+- simple LineBreak     <br/>
+@param level : LogLevel Type VERBOSE, INFO, DEBUG, WARN, ERROR     <br/>
+@param count : is linebreak shape counts     <br/>
+@param shape : is nested strings     <br/>
+```kotlin
+NLog.l()
+/*
+[MainActivity.kt:15] ===========
+*/
+```
+
+```kotlin
+NLog.l(count=20, shape = "*")
+/*
+[MainActivity.kt:17] *********************
+*/
+```
+
+  
+
+<br/>
 <br/>
 
 #### LICENSE
