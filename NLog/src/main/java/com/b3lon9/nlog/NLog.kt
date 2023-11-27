@@ -103,16 +103,25 @@ object NLog {
     fun l (): Unit = line()
 
     @JvmStatic
-    fun l(level: LogLevel = LogLevel.VERBOSE) = line(level = level)
+    fun l(level: LogLevel) = line(level = level)
 
     @JvmStatic
-    fun l(count: Int = 10) = line(count = count)
+    fun l(count: Int) = line(count = count)
 
     @JvmStatic
-    fun l(shape: String = "=") = line(shape = shape)
+    fun l(shape: String) = line(shape = shape)
 
     @JvmStatic
-    fun l(level: LogLevel = LogLevel.VERBOSE, count: Int = 10, shape: String = "=") = line(level=level, count = count, shape = shape)
+    fun l(level:LogLevel, count: Int) = line(level = level, count = count)
+
+    @JvmStatic
+    fun l(level:LogLevel, shape: String) = line(level= level, shape = shape)
+
+    @JvmStatic
+    fun l(count: Int, shape: String) = line(count = count, shape = shape)
+
+    @JvmStatic
+    fun l(level: LogLevel, count: Int, shape: String) = line(level=level, count = count, shape = shape)
 
 
     private inline fun line(level: LogLevel = LogLevel.VERBOSE, count: Int = 10, shape: String = "=") {
