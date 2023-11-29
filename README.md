@@ -24,6 +24,13 @@ dependencies {
 ```
 <br />
 
+#### import
+```kotlin
+import com.b3lon9.nlog.NLog
+```
+
+<br />
+
 #### possible LineBreak from "1.0.9" version <br />
 `NLog.l(level: LogLevel, count: Int, shape: String)`
 - simple LineBreak     <br/>
