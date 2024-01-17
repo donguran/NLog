@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Neander
+ * Copyright 2023 Neander of donguran
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ plugins {
 }
 
 android {
-    namespace 'com.b3lon9.nlog'
+    namespace 'com.donguran.nlog'
     compileSdk 34
 
     defaultConfig {
@@ -31,9 +31,13 @@ android {
     }
 
     buildTypes {
+        debug {
+
+        }
+
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -48,8 +52,8 @@ android {
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.6.0'
     //testImplementation 'junit:junit:4.13.2'
     //androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     //androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'

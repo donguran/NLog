@@ -1,4 +1,4 @@
-package com.b3lon9.nlog
+package com.donguran.nlog
 /*
  * Copyright 2023 Neander
  *
@@ -20,7 +20,7 @@ import android.util.Log
  * JvmStatic Java와의 상호작용
  * */
 object NLog {
-    private var TAG: String = "cavedwellers"
+    private var TAG: String = "donguran"
     private var isEnable = true
 
     /**

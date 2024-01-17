@@ -19,7 +19,7 @@ dependencyResolutionManagement {
 #### build.gradle(app)
 ```Gradle
 dependencies {
-    implementation 'com.github.b3lon9:NLog:1.1.1'
+    implementation 'com.github.b3lon9:NLog:1.1.2'
 }
 ```
 <br />
@@ -59,7 +59,7 @@ NLog.l(count=20, shape = "*")
 #### LICENSE
 
 ```text
-   Copyright 2023 Neander
+   Copyright 2023 Neander of donguran
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
