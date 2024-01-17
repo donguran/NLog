@@ -26,7 +26,7 @@ dependencies {
 
 #### import
 ```kotlin
-import com.b3lon9.nlog.NLog
+import com.donguran.nlog.NLog
 ```
 
 <br />
