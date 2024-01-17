@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/b3lon9/NLog.svg)](https://jitpack.io/#b3lon9/NLog)
+[![](https://jitpack.io/v/donguran/NLog.svg)](https://jitpack.io/#donguran/NLog)
 
 # NLog
 android Log , you can know linenum-ber, line location and error message
@@ -19,7 +19,7 @@ dependencyResolutionManagement {
 #### build.gradle(app)
 ```Gradle
 dependencies {
-    implementation 'com.github.b3lon9:NLog:1.1.2'
+    implementation 'com.github.donguran:NLog:1.1.3'
 }
 ```
 <br />
